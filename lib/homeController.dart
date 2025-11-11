@@ -9,7 +9,6 @@ class Homecontroller extends GetxController with GetTickerProviderStateMixin {
   late List<AnimationController> scaleControllers;
   late List<Animation<double>> scaleAnimations;
   final GlobalKey<FlipCardState> flipKey = GlobalKey<FlipCardState>();
-
   var iconCards = <GlowIcon>[].obs;
 
   // we're showing 12 cards in the grid
@@ -22,6 +21,7 @@ class Homecontroller extends GetxController with GetTickerProviderStateMixin {
   void onInit() {
     super.onInit();
 
+    //Creates a List of Cards
     createCardList();
 
     // Initialize animation controllers and animations for each card
@@ -118,14 +118,17 @@ class Homecontroller extends GetxController with GetTickerProviderStateMixin {
   }
 
   // START NEW GAME
-  void startNewGame() {
+  void startNewGame() async {
+    // Turn all the Cards
     for (int i = 0; i < 12; i++) {
       flipKeys[i].currentState!.isFront
           ? null
           : flipKeys[i].currentState!.toggleCard();
     }
-    // Creates New Random Cards
-    shuffleCards();
+    // Creates New Random Cards with 1 sec delay, to update the Icons once the cards flipped.
+    await Future.delayed(Duration(seconds: 1), () {
+      shuffleCards();
+    });
   }
 
   //-------------------------------------------------------------------------------------------------

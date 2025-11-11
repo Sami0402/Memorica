@@ -65,22 +65,22 @@ class MyHomePage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(color: Colors.indigo),
                 ),
-                child: Obx(() {
-                  return GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      // mainAxisSpacing: 3.0,
-                      // crossAxisSpacing: 10.0
-                    ),
-                    itemCount: controller.cardCount,
-                    itemBuilder: (context, index) {
-                      return CustomCard(
+                child: GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    // mainAxisSpacing: 3.0,
+                    // crossAxisSpacing: 10.0
+                  ),
+                  itemCount: controller.cardCount,
+                  itemBuilder: (context, index) {
+                    return Obx(
+                      () => CustomCard(
                         index: index,
                         icon: controller.iconCards[index],
-                      );
-                    },
-                  );
-                }),
+                      ),
+                    );
+                  },
+                ),
               ),
 
               SizedBox(height: 30),
