@@ -4,6 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:memory_matching_game/MyHomePage.dart';
 import 'package:memory_matching_game/homeController.dart';
+import 'package:memory_matching_game/temp.dart';
 
 void main() {
   runApp(const MyApp());

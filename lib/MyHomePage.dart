@@ -11,8 +11,6 @@ class MyHomePage extends StatelessWidget {
   final Homecontroller controller = Get.find<Homecontroller>();
   @override
   Widget build(BuildContext context) {
-    // Makes Random Cards
-    // controller.makeCardList();
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: SafeArea(
@@ -36,25 +34,27 @@ class MyHomePage extends StatelessWidget {
               // TITLE
               GlowText(
                 'Memorica',
-                glowColor: Colors.black,
+                glowColor: Colors.black26,
                 style: TextStyle(
-                  color: Colors.red,
-                  fontSize: 35,
+                  color: Colors.limeAccent,
+                  fontSize: 40,
                   fontWeight: FontWeight.bold,
                   fontFamily: 'good timing',
                 ),
               ),
               SizedBox(height: 15),
               // MATCHES FOUND
-              Text(
-                "Matches Found : 2 of 6",
-                style: TextStyle(
-                  color: Colors.grey[100],
-                  fontSize: 18,
-                  fontFamily: 'Pixel Game',
+              Obx(
+                () => Text(
+                  "Matches Found : ${controller.currentScore} of 6",
+                  style: TextStyle(
+                    color: Colors.grey[100],
+                    fontSize: 20,
+                    fontFamily: 'Pixel Game',
+                  ),
                 ),
               ),
-              SizedBox(height: 40),
+              SizedBox(height: 15),
               // GAME BOARD
               Container(
                 margin: EdgeInsets.all(25),
@@ -68,15 +68,13 @@ class MyHomePage extends StatelessWidget {
                 child: GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
-                    // mainAxisSpacing: 3.0,
-                    // crossAxisSpacing: 10.0
                   ),
                   itemCount: controller.cardCount,
                   itemBuilder: (context, index) {
                     return Obx(
                       () => CustomCard(
                         index: index,
-                        icon: controller.iconCards[index],
+                        icon: controller.iconCards[index]['Icon'],
                       ),
                     );
                   },
@@ -96,7 +94,7 @@ class MyHomePage extends StatelessWidget {
                       ),
                     ),
                     side: WidgetStatePropertyAll(
-                      BorderSide(color: Colors.red.shade300, width: 2),
+                      BorderSide(color: Colors.lime, width: 2),
                     ),
                     backgroundColor: WidgetStatePropertyAll(
                       Colors.indigo.shade800,

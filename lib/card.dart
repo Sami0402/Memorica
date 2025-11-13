@@ -13,10 +13,10 @@ class CustomCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final Homecontroller controller = Get.find<Homecontroller>();
     return GestureDetector(
-      onTap: () => controller.onFlip(index),
+      onTap: () => controller.matchTheCards(index),
       child: FlipCard(
         key: controller.flipKeys[index],
-        flipOnTouch: true,
+        flipOnTouch: false,
         speed: 300,
         // FRONT
         front: Container(
@@ -30,28 +30,60 @@ class CustomCard extends StatelessWidget {
           ),
         ),
         // BACK
-        back: Container(
-          margin: EdgeInsets.all(2),
-          height: 100,
-          width: 100,
-          decoration: BoxDecoration(
-            color: Colors.transparent,
-            borderRadius: BorderRadius.circular(12),
-            border: BoxBorder.all(color: Colors.indigo.shade400, width: 2.5),
-          ),
-          child: Center(
-            child: AnimatedBuilder(
-              animation: controller.scaleAnimations[index],
-              builder: (_, child) {
-                return Transform.scale(
-                  scale: controller.scaleAnimations[index].value,
-                  child: child,
+        back: Obx(() {
+          return controller.iconIndex.contains(
+                controller.iconCards[index]['index'],
+              )
+              ? GlowContainer(
+                  glowColor: Colors.indigo[600],
+                  margin: EdgeInsets.all(2),
+                  height: 100,
+                  width: 100,
+                  color: Colors.transparent,
+                  borderRadius: BorderRadius.circular(12),
+                  border: BoxBorder.all(
+                    color: Colors.indigo.shade300,
+                    width: 2.5,
+                  ),
+                  child: Center(
+                    child: AnimatedBuilder(
+                      animation: controller.scaleAnimations[index],
+                      builder: (_, child) {
+                        return Transform.scale(
+                          scale: controller.scaleAnimations[index].value,
+                          child: child,
+                        );
+                      },
+                      child: icon,
+                    ),
+                  ),
+                )
+              : Container(
+                  margin: EdgeInsets.all(2),
+                  height: 100,
+                  width: 100,
+                  decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.circular(12),
+                    border: BoxBorder.all(
+                      color: Colors.indigo.shade400,
+                      width: 2.5,
+                    ),
+                  ),
+                  child: Center(
+                    child: AnimatedBuilder(
+                      animation: controller.scaleAnimations[index],
+                      builder: (_, child) {
+                        return Transform.scale(
+                          scale: controller.scaleAnimations[index].value,
+                          child: child,
+                        );
+                      },
+                      child: icon,
+                    ),
+                  ),
                 );
-              },
-              child: icon,
-            ),
-          ),
-        ),
+        }),
       ),
     );
   }
