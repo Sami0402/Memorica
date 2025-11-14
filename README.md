@@ -1,16 +1,60 @@
-# memory_matching_game
+# 🎮 Memorica (Flutter + GetX)
 
-A new Flutter project.
+A simple, fun, and interactive Memory Matching Game built using Flutter and GetX.
+The objective is to test and improve memory skills by flipping and matching identical cards, complete with smooth animations, responsive UI, and game logic.
 
-## Getting Started
+## 🕹️ Gameplay
+![Memorica](Assets/game_recording_gif.gif)  
 
-This project is a starting point for a Flutter application.
+## 🎯 Complete Game Mechanism
+- Flip two cards
+- Check match
+- Lock matched cards
+- Flip back mismatched cards
+- Start new game
 
-A few resources to get you started if this is your first Flutter project:
+## 🧩 How It Works
+1. Cards are generated in pairs
+2. Cards are shuffled using an `RxList`
+3. Each card has its own
+    - Flip state
+    - Animation controller
+4. On flipping:
+    - Card rotates
+    - Icon scales smoothly
+5. Game resets with new random card positions
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🛠️ Tech Stack
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Flutter
+
+- Dart
+
+- GetX (State Management)
+
+
+## Installation ⚡
+
+1. Ensure Flutter is installed:
+   ```bash
+    flutter doctor
+   ```
+
+2. Clone the repository:
+   ```bash
+    git clone https://github.com/Sami0402/Memorica.git
+   ```
+
+3. Install dependencies:
+   ```bash
+    flutter pub get
+   ```
+
+4. Run the app:
+   ```bash
+    flutter run
+   ```
+ 
+
+
+
