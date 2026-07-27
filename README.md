@@ -1,4 +1,4 @@
-# 🎮 Memorica (Flutter + GetX)
+# Memorica (Flutter + GetX)
 
 A simple, fun, and interactive Memory Matching Game built using Flutter and GetX.
 The objective is to test and improve memory skills by flipping and matching identical cards, complete with smooth animations, responsive UI, and game logic.
